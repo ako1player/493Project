@@ -27,8 +27,8 @@ app.use(express.json());
 const db = mysql.createConnection({
     user:'root', //username from mysql 
     host: 'localhost',
-    password: 'sandman178', //password for mysql
-    database: 'inventorySystem', //name of the database you created
+    password: '', //password for mysql
+    database: '', //name of the database you created
 });
 
 //Adds items to database after user clicks on the Add Item button
