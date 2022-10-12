@@ -11,7 +11,7 @@ May need to have nodejs installed on computer
 */
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect} from "react";
 import Axios from 'axios';
 import Edit from './Components/Edit';
 import Search from './Components/Search';
@@ -26,10 +26,10 @@ function App() {
   const [location, setLocation] = useState("");
   const [query, setQuery] = useState("");
   //for updated items (still needs to be worked on)
-  const [newName, setNewName] = useState("");
-  const [newDesc, setNewDesc] = useState("");
+  //const [newName, setNewName] = useState("");
+  //const [newDesc, setNewDesc] = useState("");
   const [newStock, setNewStock] = useState(0);
-  const [newLocation, setNewLocation] = useState("");
+  //const [newLocation, setNewLocation] = useState("");
 
   //array of all items added to the database. name,desc, stock, location
   const [itemList, setItemList] = useState([]);
@@ -80,7 +80,7 @@ function App() {
 
 //supposed to update item. Still needs work.
 const updateItem = (id) =>{
-    Axios.put('http://localhost:3001/update', { name: newName, description: newDesc,stock: newStock, id: id}).then((response) =>{
+    Axios.put('http://localhost:3001/update', {stock: newStock, id: id}).then((response) =>{
       setItemList(itemList.map((val) =>{//this just rerenders page once updated
         return val.id === id ? {id: val.id, name: val.name, description: val.description, stock: newStock, location: val.location} : 
         val;

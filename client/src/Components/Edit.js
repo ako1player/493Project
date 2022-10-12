@@ -20,7 +20,7 @@ const Edit = ({item, onDelete, onUpdate, onHandleChange}) =>{
 
   return(
     !edit ?
-          <tr key={item.id} style={item.stock === 0 || item.stock <= 5 ? {borderColor:"red"}: {borderColor: "black"}} >
+          <tr key={item.id} style={item.stock === 0 || item.stock <= 5 ? {borderColor:"red", color:"red"}: {borderColor: "black"}} >
             <td>{item.name}</td>
             <td>{item.description}</td>
             <td>{item.location}</td>
@@ -30,9 +30,9 @@ const Edit = ({item, onDelete, onUpdate, onHandleChange}) =>{
               <button onClick={()=>{onDelete(item.id)}} className="btn btn-danger text-nowrap">Delete</button>
             </td>
           </tr> :
-          <tr key={item.id} style={item.stock === 0 || item.stock <= 5 ? {borderColor:"red"}: {borderColor: "black"}} > 
-          <td><input type="text" defaultValue={item.name} /></td>
-          <td><input type="text" defaultValue={item.description}/></td>
+          <tr key={item.id} style={item.stock === 0 || item.stock <= 5 ? {borderColor:"red", color:"red"}: {borderColor: "black"}} > 
+          <td>{item.name}</td>
+          <td>{item.description}</td>
           <td>{item.location}</td>
           <td><input type="text" defaultValue={item.stock} onChange={onHandleChange}/></td>
           <td>
