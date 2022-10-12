@@ -5,7 +5,7 @@ NOTES
 HOW TO START THE PROGRAM
 -------------------------
 Open up the terminal
-make sure you are in the inventory-version2 folder
+make sure you are in the client folder
 once in the directory type in "npm start" which should start the program.
 May need to have nodejs installed on computer
 */
