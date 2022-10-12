@@ -29,7 +29,7 @@ function App() {
   //const [newName, setNewName] = useState("");
   //const [newDesc, setNewDesc] = useState("");
   const [newStock, setNewStock] = useState(0);
-  //const [newLocation, setNewLocation] = useState("");
+  const [newLocation, setNewLocation] = useState("");
 
   //array of all items added to the database. name,desc, stock, location
   const [itemList, setItemList] = useState([]);
@@ -80,9 +80,9 @@ function App() {
 
 //supposed to update item. Still needs work.
 const updateItem = (id) =>{
-    Axios.put('http://localhost:3001/update', {stock: newStock, id: id}).then((response) =>{
+    Axios.put('http://localhost:3001/update', {location: newLocation, stock: newStock, id: id}).then((response) =>{
       setItemList(itemList.map((val) =>{//this just rerenders page once updated
-        return val.id === id ? {id: val.id, name: val.name, description: val.description, stock: newStock, location: val.location} : 
+        return val.id === id ? {id: val.id, name: val.name, description: val.description, stock: newStock, location: newLocation} : 
         val;
       }))
     });
@@ -97,6 +97,10 @@ const cnfmDelete = (id) =>{
 
 const handleChange = (e) => {
   setNewStock(e.currentTarget.value);
+}
+
+const locationChange = (e) => {
+  setNewLocation(e.currentTarget.value);
 }
 
   //Displays the table for the inventory. Using bootstrap css
@@ -143,7 +147,7 @@ const handleChange = (e) => {
           </thead>
           <tbody>
         {filterItems.map((val, key) =>(//gets the items from the itemList useState array and displays name,description, location, and stock
-         <Edit item={val} onDelete={itemDel => cnfmDelete(val.id)} onUpdate={itemUpdate => updateItem(val.id)} onHandleChange={handleChange} />
+         <Edit item={val} onDelete={itemDel => cnfmDelete(val.id)} onUpdate={itemUpdate => updateItem(val.id)} onHandleChange={handleChange} onLocationChange={locationChange} />
         ))}
           </tbody>
         </table>

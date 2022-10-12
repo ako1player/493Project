@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useCallback } from "react";
 import {FaTimes} from "react-icons/fa";
 
-const Edit = ({item, onDelete, onUpdate, onHandleChange}) =>{
+const Edit = ({item, onDelete, onUpdate, onHandleChange, onLocationChange}) =>{
 // Hook
 // Parameter is the boolean, with default "false" value
   const useToggle = (initialState = false) => {
@@ -33,7 +33,7 @@ const Edit = ({item, onDelete, onUpdate, onHandleChange}) =>{
           <tr key={item.id} style={item.stock === 0 || item.stock <= 5 ? {borderColor:"red", color:"red"}: {borderColor: "black"}} > 
           <td>{item.name}</td>
           <td>{item.description}</td>
-          <td>{item.location}</td>
+          <td><input type="text" defaultValue={item.location} onChange={onLocationChange} /></td>
           <td><input type="text" defaultValue={item.stock} onChange={onHandleChange}/></td>
           <td>
             <button onClick={()=>{onUpdate(item.id); setEdit();}} className="btn btn-success text-nowrap">Update</button>
